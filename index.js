@@ -37,13 +37,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 app.post("/upload-file", upload.single("file"), async (req, res) => {
-  const title = req.body.title;
   const fileName = req.file?.filename;
   try {
     const data = await FileModel.create({
-      title: title,
       pdf: fileName,
-      cardId: req.body.cardId,
     });
 
     res.status(200).json({ data });

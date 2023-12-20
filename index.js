@@ -15,7 +15,7 @@ app.use(
     limit: "100mb",
   })
 );
-app.use("/files", express.static("files"));
+app.use("./files", express.static("./files"));
 app.use(cors());
 
 app.get("/", (req, res) => {
